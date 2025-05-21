@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>SEI Tools</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 10px; width: 200px; }
-        h1 { font-size: 16px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>🔧 SEI Tools</h1>
-    <p>Extensão ativa!</p>
-    <p>Funcionalidade atual:<br><strong>Busca dinâmica</strong></p>
+
+    <p><strong>Funcionalidades:</strong></p>
+
+    <label>
+        <input type="checkbox" id="toggleBusca" checked>
+        Busca dinâmica -
+        <spam class="statusBusca" id="statusBusca">Ativada</spam>
+    </label>
+
+    <div class="footer">v1.0 - Em desenvolvimento</div>
+
+    <script src="popup.js"></script>
 </body>
+
 </html>

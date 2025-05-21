@@ -1,9 +1,9 @@
-window.addEventListener('load', () => {
+function ativarBuscaDinamica() {
     const inputBusca = document.querySelector('input[id*="txtPesquisa"]');
     const tabelas = [
         document.getElementById('tblProcessosGerados'),
         document.getElementById('tblProcessosRecebidos')
-    ].filter(Boolean); // Remove null se alguma tabela não existir
+    ].filter(Boolean);
 
     if (!inputBusca || tabelas.length === 0) {
         console.log('SEI Tools: Campo de busca ou tabelas não encontrados nesta página.');
@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     }
 
     const linhasPorTabela = tabelas.map(tabela =>
-        Array.from(tabela.querySelectorAll('tr')).slice(1) // Remove cabeçalho
+        Array.from(tabela.querySelectorAll('tr')).slice(1)
     );
 
     inputBusca.addEventListener('input', () => {
@@ -32,14 +32,25 @@ window.addEventListener('load', () => {
 
                 const conteudoBusca = `${aria} ${mouseover} ${textoLink}`;
 
-                if (conteudoBusca.includes(termo)) {
-                    linha.style.display = '';
-                } else {
-                    linha.style.display = 'none';
-                }
+                linha.style.display = conteudoBusca.includes(termo) ? '' : 'none';
             });
         });
     });
 
-    console.log('SEI Tools: Busca dinâmica aplicada nas tabelas tblProcessosGerados e tblProcessosRecebidos.');
+    console.log('SEI Tools: Busca dinâmica ativada.');
+}
+
+
+// Carregar configurações e ativar funcionalidades
+chrome.storage.sync.get(['buscaAtiva'], (data) => {
+    const buscaAtiva = data.buscaAtiva !== false; // padrão: true
+    if (buscaAtiva) {
+        ativarBuscaDinamica();
+    } else {
+        console.log('SEI Tools: Busca dinâmica desativada pelo usuário.');
+    }
+
+    // todo
+    // if (data.marcarNaoLido) ativarMarcarNaoLido();
+    // if (data.visualizacaoNautilus) ativarVisualizacaoNautilus();
 });
