@@ -1,0 +1,23 @@
+/* Realce o campo de busca quando está ativo */
+input[id*="txtPesquisa"] {
+  border: 2px solid #0078D4;
+  outline: none;
+}
+
+/* Linhas ocultadas ficam escondidas (alternativo ao JS, mas reforça) */
+tr[style*="display: none"] {
+  display: none !important;
+}
+
+/* Mensagem temporária (se quiser implementar futuramente) */
+.sei-tools-msg {
+  background-color: #0078D4;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}

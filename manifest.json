@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "SEI Tools",
+  "version": "0.1.0",
+  "description": "Extensão que adiciona melhorias ao SEI, como busca dinâmica e organização de processos.",
+  "icons": {
+    "16": "icons/sei_barra.svg",
+    "48": "icons/sei_barra.svg",
+    "128": "icons/sei_barra.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/sei/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/sei/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/sei_barra.svg",
+      "48": "icons/sei_barra.svg",
+      "128": "icons/sei_barra.svg"
+    }
+  }
+}
